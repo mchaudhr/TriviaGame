@@ -4,28 +4,111 @@
 	<meta charset="UTF-8">
     <title>Trivia Game</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	
 </head>
 <body>
+	<div class="container text-center" id="wrapper">
+		<h1 id="title">Totally Trivial Trivia</h1>
 
-<div class="container-fluid text-center">
-	
-	<div class="row"><h1>Totally Trivial Trivia!</h1></div>
-	<div class="row" id="timer">
-		<div class="col-md-7"><h3>Time Remaining: </h3></div>
-		<div id="time-left" class="col-md-4"><h3>20</h3></div>
-	</div>
-	<div class="game">
-		<div class="start">
-			<input type="button" class="btn btn-default btn btn-lg" id="startGame" value="Start Game">
+		<div class="container-fluid text-center" id="subWrapper">		
+		<button id="start">Start</button>
 		</div>
 	</div>
+	
+<div>
+	
+</div>
+	
+	
 
-<script type="text/javascript" src="assets/javascript/game.js"></script>
 
+	<script type="text/javascript">
+		$("#start").on("click",function(){
+			game.start();
+		})
+		$(document).on("click","#end",function(){
+    	game.done();
+})
+		var questions = [{
+			question:"What was the first full length CGI movie?",
+			answers:["A Bug's Life", "Monster Inc", "Toy Story", "The Lion"],
+			correctAnswer:"Toy Story"
+		}, {
+			question:"Which of these is NOT a name of one of the spice girls?",
+			answers:["Sporty Spice", "Fred Spice", "Scary Spice", "Posh Spice"],
+			correctAnswer:"Fred Spice"
+		},
+		{
+			question:"Which NBA team won the most titles in the 90s?",
+			answers:["New York Knicks", "Portland Trailblazers", "Los Angeles","Chicago Bulls"],
+			correctAnswer:"Chicago Bulls"
+		},
+		{
+			question:"Which group released the hit song, 'Smells like teen spirit'?",
+			answers:["Nirvana", "Backstreet Boys", "The Offspring", "No Doubt"],
+			correctAnswer:"Nirvana"
+		},
+		{
+			question:"Which popular disney movie Featured the song, 'Circle Of Life'?",
+			answers:["Aladdin", "Hercules", "Mulan", "The Lion King"],
+			correctAnswer:"The Lion King"
+		},
+		{
+			question:"They -------------------- here very often",
+			answers:["don't come", "doesn't come", "doesn't comes", "isn't come"],
+			correctAnswer:"don't come"
+		},
+		{
+			question:"I -------------------- mind at all.",
+			answers:["don't mind", "doesn't mind", "doesn't minds", "isn't mind"],
+			correctAnswer:"don't mind"
+		},
+		{
+			question:"It -------------------- sense.",
+			answers:["don't make", "doesn't make", "doesn't makes", "isn't make"],
+			correctAnswer:"doesn't make"
+		
+		}];
+
+		var game = {
+			correct: 0,
+			incorrect: 0,
+			counter: 5,
+			// alert
+			countDown: function(){
+				game.counter--;
+				$("#counter").html(game.counter);
+				if(game.counter <= 0){
+					alert("Time's up!");
+
+					game.done();
+				}
+			},
+			start: function(){
+				timer = setInterval(game.countDown,1000);
+				$("#subWrapper").prepend("<h3>Time Remaining: <span id='counter'>120</span> Seconds</h3>");
+				$("#start").remove();
+					for(var i=0; i<questions.length;i++){
+						$("#subWrapper").append('<h4>'+questions[i].question+'</h4>');
+						for(var j=0; j<questions[i].answers.length; j++){
+							$("#subWrapper").append("<input type='radio' name='question-" + i + "' value='"+ questions[i].answers[j]+"'>"+questions[i].answers[j])
+						}
+					}
+					$("#subWrapper").append("<br><button id='end'>Done</button>")
+			},
+
+
+			}
+
+		
+
+
+
+	</script>
 </body>
 </html>

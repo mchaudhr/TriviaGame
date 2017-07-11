@@ -1,40 +1,8 @@
-h1 {
-	font-size: 40px;
-	color: white;
+html {
+	
+	background-display: none;
 }
 
-#timer {
-	/*padding: 5px;*/
-	/*margin: 5px;*/
-	color: #FFFAF0;
+.container-fluid{
+	background: url("http://www.mastergate.co.il/preview/wp-content/themes_textures/pattern/flower-swirl10.png");
 }
-
-.start {
-	padding: 60px;
-	margin: 100px;
-}
-
-.final {
-	padding: 65px;
-	margin: 60px;
-}
-
-.game {
-	background: #87CEFA;
-	padding: 100px;
-	margin: 60px;
-	margin-top: 20px;
-	/*margin-top: 40px;
-	margin-bottom: 80px;
-	margin-right: 80px;
-	margin-left: 80px;*/
-}
-
-.container-fluid {
-	background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE7mknQtQk68IiYCJT6Ar6brAPQnu4WC1wN5DDjcl1tNQdjI2b");
-}
-
-/*.button {
-	background: lightyellow;
-	margin: 40px;
-}*/
