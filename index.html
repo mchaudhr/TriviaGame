@@ -33,7 +33,8 @@
 		})
 		$(document).on("click","#end",function(){
     	game.done();
-})
+		})
+
 		var questions = [{
 			question:"What was the first full length CGI movie?",
 			answers:["A Bug's Life", "Monster Inc", "Toy Story", "The Lion"],
@@ -78,14 +79,14 @@
 		var game = {
 			correct: 0,
 			incorrect: 0,
-			counter: 5,
+			counter: 25,
 			// alert
 			countDown: function(){
 				game.counter--;
 				$("#counter").html(game.counter);
 				if(game.counter <= 0){
-					alert("Time's up!");
-
+					// alert("Time's up!");
+					
 					game.done();
 				}
 			},
@@ -99,10 +100,79 @@
 							$("#subWrapper").append("<input type='radio' name='question-" + i + "' value='"+ questions[i].answers[j]+"'>"+questions[i].answers[j])
 						}
 					}
-					$("#subWrapper").append("<br><button id='end'>Done</button>")
+					$("#subWrapper").append("<br><br><br><button id='end'>Done</button>")
 			},
 
+			done: function(){()
+				$.each($("input[name='question-1]':checked",function(){
+					if($(this).val()==questions[0].correctAnswer){
+						game.correct++;
+					} else{
+						game.incorrect++;
+					}
+				}));
+				$.each($("input[name='question-1]':checked",function(){
+					if($(this).val()==questions[1].correctAnswer){
+						game.correct++;
+					} else{
+						game.incorrect++;
+					}
+				}));
+				$.each($("input[name='question-1]':checked",function(){
+					if($(this).val()==questions[2].correctAnswer){
+						game.correct++;
+					} else{
+						game.incorrect++;
+					}
+				}));
+				$.each($("input[name='question-1]':checked",function(){
+					if($(this).val()==questions[3].correctAnswer){
+						game.correct++;
+					} else{
+						game.incorrect++;
+					}
+				}));
+				$.each($("input[name='question-1]':checked",function(){
+					if($(this).val()==questions[4].correctAnswer){
+						game.correct++;
+					} else{
+						game.incorrect++;
+					}
+				}));
+				$.each($("input[name='question-1]':checked",function(){
+					if($(this).val()==questions[5].correctAnswer){
+						game.correct++;
+					} else{
+						game.incorrect++;
+					}
+				}));
+				$.each($("input[name='question-1]':checked",function(){
+					if($(this).val()==questions[6].correctAnswer){
+						game.correct++;
+					} else{
+						game.incorrect++;
+					}
+				}));
+				$.each($("input[name='question-1]':checked",function(){
+					if($(this).val()==questions[7].correctAnswer){
+						game.correct++;
+					} else{
+						game.incorrect++;
+					}
+				}));
+				this.result();
+				clearInterval(timer);
+			},
+				result: function(){
+					clearInterval(timer);
+					$("#subWrapper h3").remove();
 
+					$("#subWrapper").html("<h3>All Done</h3>");
+					$("#subWrapper").append("<h4>Correct Answer: "+this.correct+"</h4>");
+					$("#subWrapper").append("<h4>Incorrect Answer: "+this.incorrect+"</h4>");
+					$("#subWrapper").append("<h4>Unanswer: "+(questions.length-(this.incorrect+this.correct))+"</h4>");
+
+				}
 			}
 
 		
