@@ -1,5 +1,3 @@
-
-
 $("#start").on("click",function(){
-	$("#subWrapper").remove()
+	console.log("you clicked me")
 })
